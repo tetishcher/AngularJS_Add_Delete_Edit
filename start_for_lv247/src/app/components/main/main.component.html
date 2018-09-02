@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <ul ng-repeat='person in $ctrl.persons' class="list-group">
+                <li class="list-group-item">
+                    <span ng-if="!person.editMode"><strong>Name:</strong>{{person.name}}<br><strong>City:</strong>{{person.city}}</span>
+                    <input ng-if="person.editMode" type="text" ng-model="person.name" />
+                    <input ng-if="person.editMode" type="text" ng-model="person.city" />
+                    <br> <br>
+                    <button ng-click="$ctrl.onDelete(person.id)" class="btn btn-danger">Delete</button>
+                    <button ng-click="$ctrl.onAdd(person.id)" class="btn btn-success">Add</button>
+                    <button class="btn btn-primary" ng-click="$ctrl.onEdit(person)">
+                        <span ng-if="!person.editMode">Edit</span>
+                        <span ng-if="person.editMode">Save</span>
+                    </button></td>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" ng-if='$ctrl.createMode'>
+        <div class="col-12">
+
+            <h1>New person</h1>
+            <div class="form-group">
+                <label for="name">Name: </label>
+                <input ng-model='$ctrl.formName' id='name' type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="city">City: </label>
+                <input ng-model='$ctrl.formCity' id='city' type="text" class="form-control">
+            </div>
+
+            <button ng-click='$ctrl.onCreate()' class="btn btn-primary">Add</button>
+
+        </div>
+    </div>
+</div>
